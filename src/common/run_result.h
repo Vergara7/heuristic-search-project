@@ -21,7 +21,10 @@ struct TRunResult {
 };
 
 std::vector<TNode> RestorePath(std::shared_ptr<TNode> fin) {
-    std::vector<TNode> path{*fin};
+    std::vector<TNode> path;
+    if (!fin)
+        return path;
+    path.push_back(*fin);
     while (fin->Parent){
         fin = fin->Parent;
         path.push_back(*fin);

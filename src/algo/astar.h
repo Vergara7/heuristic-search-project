@@ -11,9 +11,9 @@
 #include "util/open.h"
 #include "util/closed.h"
 
-template<class CostFunc, class HeuristicFunc>
-TRunResult AStar(uint xst, uint yst, uint xfin, uint yfin,
-        const TMap& map, CostFunc computeCost, HeuristicFunc heuristic)
+template<class SuccessorsFunc, class CostFunc, class HeuristicFunc>
+TRunResult AStar(uint xst, uint yst, uint xfin, uint yfin, const TMap& map,
+        SuccessorsFunc getNeighbors, CostFunc computeCost, HeuristicFunc heuristic)
 {
     TOpen open;
     TClosed closed;
@@ -27,10 +27,15 @@ TRunResult AStar(uint xst, uint yst, uint xfin, uint yfin,
         closed.Push(v);
         if (v->x == xfin && v->y == yfin)
             return TRunResult(v, open.Size(), closed.Size());
-        for (auto u : GetNeighbors(*v, map)){
-            if (!open.Contains(u) && !closed.Contains(u))
-                open.Push(std::make_shared<TNode>(u->x, u->y,
-                    v->g + computeCost(*v, *u), heuristic(*u, *f), v)); 
+        auto neighbors = getNeighbors(*v, map);
+        for (auto u : getNeighbors(*v, map)){
+            if (!open.Contains(u) && !closed.Contains(u)) {
+                u->g = v->g + computeCost(*v, *u);
+                u->h = heuristic(*u, *f);
+                u->F = u->g + u->h;
+                u->Parent = v;
+                open.Push(std::move(u));     
+            }    
         }
     }
    

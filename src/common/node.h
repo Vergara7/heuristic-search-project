@@ -36,4 +36,4 @@ TNode::TNode(int x, int y, dbl g, dbl h, std::shared_ptr<TNode> parent) :
     g(g == -1 ? std::numeric_limits<dbl>::max() : g),
     h(h),
     F(g + h),
-    Parent(parent) {}
+    Parent(std::move(parent)) {}
