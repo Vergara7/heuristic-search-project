@@ -21,10 +21,11 @@ TRunResult AStar(uint xst, uint yst, uint xfin, uint yfin,
     auto f = std::make_shared<TNode>(xfin, yfin);
     open.Push(std::make_shared<TNode>(xst, yst));
 
-    while (!open.IsEmpty()) { 
+    while (!open.IsEmpty()) {
         auto v = open.Pop();
         if (closed.Contains(v))
             continue;
+        closed.Push(v);
         if (v->x == xfin && v->y == yfin)
             return TRunResult(v, open.Size(), closed.Size());
         for (auto u : GetNeighbors(*v, map)){
@@ -33,7 +34,7 @@ TRunResult AStar(uint xst, uint yst, uint xfin, uint yfin,
                     v->g + computeCost(*v, *u), heuristic(*u, *f), v)); 
         }
     }
-    
+   
     return TRunResult(nullptr, open.Size(), closed.Size());     
 }
 

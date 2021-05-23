@@ -7,6 +7,8 @@
 using dbl = long double;
 using ll = long long;
 
+const dbl EPS = 1e-6;
+
 struct TNode{
     int x, y;
     dbl g, h, F;
@@ -19,7 +21,7 @@ struct TNode{
 };
 
 bool operator<(const TNode& lhs, const TNode& rhs) {
-    return lhs.F < rhs.F;
+    return lhs.F + EPS < rhs.F;
 }
 
 struct TNodeGreaterComp{
