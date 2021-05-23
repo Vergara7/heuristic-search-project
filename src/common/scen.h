@@ -26,7 +26,7 @@ std::vector<TScen> LoadScens(std::string file_path){
         std::stringstream ss(s);
         int h, w;
         ss >> scen.Level >> scen.MapName;
-        ss >> h >> w >> scen.xst >> scen.yst >> scen.xfin >> scen.yfin >> scen.Answer;
+        ss >> h >> w >> scen.yst >> scen.xst >> scen.yfin >> scen.xfin >> scen.Answer;
         if (!scens.empty())
             assert(scen.MapName == scens[0].MapName);
         scens.push_back(scen);

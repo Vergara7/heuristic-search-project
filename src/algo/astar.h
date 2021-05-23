@@ -11,15 +11,14 @@
 #include "util/open.h"
 #include "util/closed.h"
 
-using Func = dbl(const TNode&, const TNode&);
-
+template<class CostFunc, class HeuristicFunc>
 TRunResult AStar(uint xst, uint yst, uint xfin, uint yfin,
-        const TMap& map, Func computeCost, Func heuristic)
+        const TMap& map, CostFunc computeCost, HeuristicFunc heuristic)
 {
     TOpen open;
     TClosed closed;
     auto f = std::make_shared<TNode>(xfin, yfin);
-    open.Push(std::make_shared<TNode>(xst, yst));
+    open.Push(std::make_shared<TNode>(xst, yst, 0));
 
     while (!open.IsEmpty()) {
         auto v = open.Pop();
