@@ -12,6 +12,7 @@ constexpr dbl INF = 1e18;
 
 class TAnya {
 public:
+    uint NodesExpanded = 0;
     TAnya(const TMap& map);
     dbl Run(int xst, int yst, int xfin, int yfin, std::vector<std::pair<int, int>>& path);
 

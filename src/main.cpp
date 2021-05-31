@@ -91,7 +91,7 @@ int main(int argc, char* argv[]){
                 for (auto node : path)
                     out << node.x << ' ' << node.y << ' ';
                 out << std::endl;
-                out << result.NodesInOpen << ' ' << result.NodesInClosed << std::endl;
+                out << "nodes expanded: " << result.NodesInOpen + result.NodesInClosed << std::endl;
             }
             if (cntFailed)
                 std::cout << "    Could not find path for " << cntFailed << " scens" << endl;

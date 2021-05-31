@@ -1,6 +1,6 @@
-all: build_anya run_simple_anya
+all: build_anya build run_all
 
-run_all: run_astar run_2k_astar run_theta
+run_all: run_astar run_2k_astar run_theta run_anya
 
 run_simple_anya: 
 	./main_anya dataset artifacts
@@ -28,6 +28,9 @@ run_theta:
 	./main theta euclidian dataset artifacts && \
 	./main theta chebyshev dataset artifacts && \
 	./main theta diagonal dataset artifacts
+
+run_anya:
+	./main_anya dataset artifacts
 
 build:
 	g++ -std=c++17 src/main.cpp -I src -fsanitize=address -O2 -Wshift-overflow -o main

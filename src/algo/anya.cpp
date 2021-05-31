@@ -381,6 +381,7 @@ void TAnya::Reset() {
     States.clear();
     AnyaHashMap.Clear();
     OpenList.clear();
+    NodesExpanded = 0;
 }
 
 void TAnya::AddToOpen(uint id) {
@@ -391,6 +392,7 @@ void TAnya::AddToOpen(uint id) {
         States[id].Index = index;
         States[id].State = EState::STATE_IN_OPEN;
         OpenList.push_back(THeapElementh{id, 0, 0});
+        NodesExpanded++;
     }
 
     OpenList[index].g = States[id].g;

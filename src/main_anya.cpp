@@ -47,6 +47,7 @@ int main(int argc, char* argv[]){
                 for (auto node : path)
                     out << node.first << ' ' << node.second << ' ';
                 out << std::endl;
+                out << "nodes expanded: " << anyaAlgo.NodesExpanded << endl;
             }
             if (cntFailed)
                 std::cout << "    Could not find path for " << cntFailed << " scens" << endl;
