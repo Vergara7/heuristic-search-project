@@ -14,7 +14,7 @@ constexpr dbl EPS = 1e-8;
 
 struct TPosition{
     int x, y;
-    TPosition(int x = 0, int y = 0) : x(x), y(0) {}
+    TPosition(int x = 0, int y = 0) : x(x), y(y) {}
 };
 
 inline bool operator == (const TPosition& lhs, const TPosition& rhs) {

@@ -13,6 +13,7 @@ class TMap{
 public:
     TMap(std::string file_path);
     bool CellIsClear(int x, int y) const;
+    bool NodeIsClear(int x, int y) const;
     bool PathIsClear(int x1, int y1, int x2, int y2) const;
 
     int GetHeight() const {
@@ -60,6 +61,10 @@ inline TMap::TMap(std::string file_path) {
 }
 
 inline bool TMap::CellIsClear(int x, int y) const {
+    return !MapGrid[x][y];
+}
+
+inline bool TMap::NodeIsClear(int x, int y) const {
     if (!(x >= 0 && x <= Height && y >= 0 && y <= Width))
         return false;
     if (x > 0 && y > 0 && !MapGrid[x - 1][y - 1])
@@ -86,7 +91,7 @@ inline bool TMap::VerticalEdgeIsClear(int x, int y) const {
 }
 
 inline bool TMap::PathIsClear(int x1, int y1, int x2, int y2) const {
-    if (!CellIsClear(x1, y1) || !CellIsClear(x2, y2))
+    if (!NodeIsClear(x1, y1) || !NodeIsClear(x2, y2))
         return false;
     if (x1 > x2){
         std::swap(x1, x2);

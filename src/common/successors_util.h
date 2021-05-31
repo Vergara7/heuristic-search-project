@@ -28,7 +28,7 @@ const auto KNeighborsShifts = BuildKNeighborsShifts(12);
 std::vector<std::shared_ptr<TNode>> GetKNeighbors(const TNode& node, const TMap& map, int k) {
     std::vector<std::shared_ptr<TNode>> neighbors;
     for (auto[dx, dy] : KNeighborsShifts[k - 1]){
-        if (!map.CellIsClear(node.x + dx, node.y + dy))
+        if (!map.NodeIsClear(node.x + dx, node.y + dy))
             continue;
         if (map.PathIsClear(node.x, node.y, node.x + dx, node.y + dy))
             neighbors.push_back(std::make_shared<TNode>(node.x + dx, node.y + dy));

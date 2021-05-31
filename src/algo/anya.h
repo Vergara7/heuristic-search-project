@@ -43,7 +43,7 @@ private:
         return abs(y2 - y1) < EPS ? y1 : ((x2 - x1) / (y2 - y1)) * (y - y1) + x1;
     }
 
-    std::vector<uint> Successors(TPosition r, const TInterval& I, TPosition fin);
+    std::vector<uint> Successors(TPosition r, TInterval I, TPosition fin);
     std::vector<uint> ThisRowSuccessors(TPosition r, const TInterval& I, TPosition fin);
     std::vector<uint> OtherRowSuccessors(TPosition r, const TInterval& I, TPosition fin);
 

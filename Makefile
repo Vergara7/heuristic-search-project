@@ -1,4 +1,4 @@
-all: build build_anya run_simple_anya
+all: build_anya run_simple_anya
 
 run_all: run_astar run_2k_astar run_theta
 

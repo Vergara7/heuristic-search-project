@@ -4,6 +4,9 @@
 #include <cstdlib>
 #include <algorithm>
 
+#include <iostream>
+using std::cout, std::endl;
+
 namespace NAnya {
 
 dbl TAnya::Run(int xst, int yst, int xfin, int yfin, std::vector<std::pair<int, int>>& path) {
@@ -22,22 +25,23 @@ dbl TAnya::Run(int xst, int yst, int xfin, int yfin, std::vector<std::pair<int, 
     dbl cost = INF;
     uint goal;
 
+
     while (!OpenList.empty()) {
         uint cur = Top().StateID;
         Pop();
 
+
         if (States[cur].I.RowID == yfin &&
                 States[cur].I.Left - EPS < xfin && States[cur].I.Right + EPS > xfin){
             pathFound = true;
-            cost = States[cur].g;
+            cost = States[cur].g + EuclidianDistance(States[cur].r, fin);
             goal = cur;
             break;
         }
 
         for (uint succ : Successors(States[cur].r, States[cur].I, fin)) {
             if (States[succ].State != EState::STATE_IN_CLOSED) {
-                dbl g = States[succ].g + EuclidianDistance(States[cur].r, States[succ].r);
-
+                dbl g = States[cur].g + EuclidianDistance(States[cur].r, States[succ].r);
                 if (g + EPS < States[succ].g) {
                     States[succ].g = g;
                     States[succ].Parent = cur;
@@ -69,22 +73,22 @@ TAnya::TAnya(const TMap& map) {
     Height = map.GetHeight() + 2;
     Width = map.GetWidth() + 2;
 
-    MapGrid.resize(Height, std::vector<bool>(Width));
-    for (uint i = 0; i < Height - 2; i++)
-        for (uint j = 0; j < Width - 2; j++)
-            MapGrid[i + 1][j + 1] = map.CellIsClear(i, j);
+    MapGrid.resize(Width, std::vector<bool>(Height));
+    for (uint i = 0; i < Width - 2; i++)
+        for (uint j = 0; j < Height - 2; j++)
+            MapGrid[i + 1][j + 1] = map.CellIsClear(j, i);
 
-    Corners.resize(Height - 1);
+    Corners.resize(Width - 1);
     for (auto& row : Corners)
-        row.resize(Width - 1);
+        row.resize(Height - 1);
 
-    for (int j = 0; j < Width - 1; j++){
+    for (int j = 0; j < Height - 1; j++){
         bool topBlocked = true, bottomBlocked = true;
         int clearance = 0, topClearance = 0, bottomClearance = 0;
 
-        for (int i = 0; i < Height - 1; i++){
-            bool nextTopBlocked = !map.CellIsClear(i + 1, j);
-            bool nextBottomBlocked = !map.CellIsClear(i + 1, j + 1);
+        for (int i = 0; i < Width - 1; i++){
+            bool nextTopBlocked = !MapGrid[i + 1][j];
+            bool nextBottomBlocked = !MapGrid[i + 1][j + 1];
 
             if (topBlocked && bottomBlocked)
                 clearance = 0;
@@ -107,20 +111,20 @@ TAnya::TAnya(const TMap& map) {
                 topBlocked = nextTopBlocked;
                 bottomBlocked = nextBottomBlocked;
             }
-
+            
             clearance++;
             topClearance++;
             bottomClearance++;
         }
     }
 
-    for (int j = 0; j < Width - 1; j++){
+    for (int j = 0; j < Height - 1; j++){
         bool topBlocked = true, bottomBlocked = true;
         int clearance = 0, topClearance = 0, bottomClearance = 0;
 
-        for (int i = Height - 2; i >= 0; i--){
-            bool nextTopBlocked = !map.CellIsClear(i, j);
-            bool nextBottomBlocked = !map.CellIsClear(i, j + 1);
+        for (int i = Width - 2; i >= 0; i--){
+            bool nextTopBlocked = !MapGrid[i][j];
+            bool nextBottomBlocked = !MapGrid[i][j + 1];
 
             if (topBlocked && bottomBlocked)
                 clearance = 0;
@@ -146,15 +150,17 @@ TAnya::TAnya(const TMap& map) {
             } else
                 Corners[i][j].IsTransitionPoint = false;
 
-            int nw = map.CellIsClear(i, j), ne = map.CellIsClear(i + 1, j);
-            int sw = map.CellIsClear(i, j + 1), se = map.CellIsClear(i + 1, j + 1);
-            Corners[i][j].IsConvexCorner = (nw + ne + sw + se) == 2 && (nw + se) % 2 == 0;
+            int nw = MapGrid[i][j], ne = MapGrid[i][j + 1];
+            int sw = MapGrid[i + 1][j], se = MapGrid[i + 1][j + 1];
+            int summa = nw + ne + sw + se;
+            Corners[i][j].IsConvexCorner = (summa == 2 && (nw + se) % 2 == 0) || summa == 3;
 
             clearance++;
             topClearance++;
             bottomClearance++;
         }
     }
+
 }
 
 TAnyaStateKey TAnya::GenerateStateKey(TPosition r, const TInterval& I) const {
@@ -185,7 +191,7 @@ std::vector<uint> TAnya::Intervals(int row, dbl left, dbl right, TPosition r, TP
 
     int xLeft = LeftColumn(left);
     int xRight = RightColumn(right);
-
+    
     for (int x = xLeft; x < xRight;){
         int delta = Corners[x][row].IntervalClearance[1];
 
@@ -247,7 +253,7 @@ void TAnya::RightIntervals(dbl fx, int y, int dir,
     }
 }
 
-std::vector<uint> TAnya::Successors(TPosition r, const TInterval& I, TPosition fin) {
+std::vector<uint> TAnya::Successors(TPosition r, TInterval I, TPosition fin) {
     if (I.Right - I.Left < EPS)
         return {};
 
@@ -269,9 +275,9 @@ std::vector<uint> TAnya::ThisRowSuccessors(TPosition r, const TInterval& I, TPos
         if (Corners[I.IRight][I.RowID].IntervalClearance[1] > 0) {
             successors.push_back(GenerateState(r, GetRightInterval(I.IRight, I.RowID), fin));
             if (I.Blocked[0])
-                RightIntervals(I.IRight, I.RowID - 1, 1, TPosition(I.ILeft, I.RowID), fin, successors);
+                RightIntervals(I.IRight, I.RowID - 1, 1, TPosition(I.IRight, I.RowID), fin, successors);
             if (I.Blocked[1])
-                RightIntervals(I.IRight, I.RowID + 1, 0, TPosition(I.ILeft, I.RowID), fin, successors);
+                RightIntervals(I.IRight, I.RowID + 1, 0, TPosition(I.IRight, I.RowID), fin, successors);
         }
     }
     return successors;
@@ -283,19 +289,20 @@ std::vector<uint> TAnya::OtherRowSuccessors(TPosition r, const TInterval& I, TPo
         dir = 1;
         newRow = I.RowID + 1;
     }
-
     dbl leftIntersection = GetIntersectingX(r.x, r.y, I.Left, I.RowID, newRow);
     dbl rightIntersection = GetIntersectingX(r.x, r.y, I.Right, I.RowID, newRow);
+
 
     int leftBound = I.ILeft - Corners[I.ILeft][I.RowID].Clearance[dir][0];
     int rightBound = I.IRight + Corners[I.IRight][I.RowID].Clearance[dir][1];
 
     dbl left = leftIntersection < leftBound ? leftBound : leftIntersection;
     dbl right = rightIntersection > rightBound ? rightBound : rightIntersection;
-
+   
     std::vector<uint> successors;
-    if (!I.Blocked[dir])
+    if (!I.Blocked[dir]) {
         successors = Intervals(newRow, left, right, r, fin);
+    }
 
     if (abs(I.Left - I.ILeft) < EPS && Corners[I.ILeft][I.RowID].IsConvexCorner) {
         if (Corners[I.ILeft][I.RowID].IntervalBlocked[1 - dir][0])
@@ -343,7 +350,8 @@ void TAnya::InitializeSearch(TPosition st, TPosition fin) {
 
         if (leftBound != rightBound) {
             int delta = dir * 2 - 1;
-            initialStates = Intervals(st.y + delta, leftBound, rightBound, st, fin);
+            for (auto state : Intervals(st.y + delta, leftBound, rightBound, st, fin))
+                initialStates.push_back(state);
         }
     }
 

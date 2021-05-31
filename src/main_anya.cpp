@@ -32,13 +32,14 @@ int main(int argc, char* argv[]){
                 datasetsDir.path().filename().filename() / scensFile.path().filename();
            
             std::ofstream out(save_path);
-            int cntFailed = 0;
+            int cntFailed = 0, cnt = 0;
             NAnya::TAnya anyaAlgo(map);
             for (auto scen : scens){
+                cnt++;
                 if (scen.Level >= 7)
                     continue;
                 std::vector<std::pair<int, int>> path;
-                anyaAlgo.Run(scen.xst, scen.yst, scen.xfin, scen.yfin, path);
+                dbl cost = anyaAlgo.Run(scen.yst, scen.xst, scen.yfin, scen.xfin, path);
                 if (path.size() == 0) {
                     out << "No path???" << std::endl;
                     cntFailed++;
