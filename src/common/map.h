@@ -65,7 +65,7 @@ inline bool TMap::CellIsClear(int x, int y) const {
 }
 
 inline bool TMap::NodeIsClear(int x, int y) const {
-    if (!(x >= 0 && x <= Height && y >= 0 && y <= Width))
+    if (x < 0 || x > Height || y < 0 || y > Width)
         return false;
     if (x > 0 && y > 0 && !MapGrid[x - 1][y - 1])
         return true;
@@ -118,7 +118,7 @@ inline bool TMap::PathIsClear(int x1, int y1, int x2, int y2) const {
     if (y1 < y2){
         int y = y1;
         for (int x = x1; x < x2; x++){
-            while (vectProduct(dx, dy, x + 1 - x1, y + 1 - y1) > 0){
+            while (vectProduct(dx, dy, x + 1 - x1, y + 1 - y1) > 0 && y + 1 < Width){
                 if (MapGrid[x][y])
                     return false;
                 y++;
@@ -129,7 +129,7 @@ inline bool TMap::PathIsClear(int x1, int y1, int x2, int y2) const {
     } else {
         int y = y1 - 1;
         for (int x = x1; x < x2; x++){
-            while (vectProduct(x + 1 - x1, y - y1, dx, dy) > 0){
+            while (vectProduct(x + 1 - x1, y - y1, dx, dy) > 0 && y > 0){
                 if (MapGrid[x][y])
                     return false;
                 y--;
