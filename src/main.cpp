@@ -30,7 +30,7 @@ AlgoFunc CreateAlgo(const std::string& algo_name, const std::string heuristicNam
             return GetKNeighbors(node, map, 2);
         };
         return [=](int xs, int ys, int xf, int yf, TMap map){
-            return AStar(xs, ys, xf, yf, map, getNeighbors, EuclidianDistance, heuristic);
+            return AStar(xs, ys, xf, yf, map, getNeighbors, EuclidianDistance, heuristic, false);
         };
     }
     if (algo_name.substr(0, 2) == "2k"){
@@ -39,7 +39,15 @@ AlgoFunc CreateAlgo(const std::string& algo_name, const std::string heuristicNam
             return GetKNeighbors(node, map, k);
         };
         return [=](int xs, int ys, int xf, int yf, TMap map){
-            return AStar(xs, ys, xf, yf, map, getNeighbors, EuclidianDistance, heuristic);
+            return AStar(xs, ys, xf, yf, map, getNeighbors, EuclidianDistance, heuristic, false);
+        };
+    }
+    if (algo_name == "theta"){
+        auto getNeighbors = [=](const TNode& node, const TMap& map){
+            return GetKNeighbors(node, map, 2);
+        };
+        return [=](int xs, int ys, int xf, int yf, TMap map){
+            return AStar(xs, ys, xf, yf, map, getNeighbors, EuclidianDistance, heuristic, false);
         };
     }
     assert(false);
@@ -72,7 +80,7 @@ int main(int argc, char* argv[]){
             std::ofstream out(save_path);
             int cntFailed = 0;
             for (auto scen : scens){
-                if (scen.Level >= 3)
+                if (scen.Level >= 7)
                     continue;
                 auto result = algo(scen.xst, scen.yst, scen.xfin, scen.yfin, map);
                 auto path = RestorePath(result.FinishNode);
@@ -85,7 +93,8 @@ int main(int argc, char* argv[]){
                 out << std::endl;
                 out << result.NodesInOpen << ' ' << result.NodesInClosed << std::endl;
             }
-            // std::cout << "    Could not find path for " << cntFailed << " scens" << endl;
+            if (cntFailed)
+                std::cout << "    Could not find path for " << cntFailed << " scens" << endl;
         }
     }
     return 0;

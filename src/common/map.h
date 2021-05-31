@@ -15,15 +15,24 @@ public:
     bool CellIsClear(int x, int y) const;
     bool PathIsClear(int x1, int y1, int x2, int y2) const;
 
+    int GetHeight() const {
+        return Height;
+    }
+
+    int GetWidth() const {
+        return Width;
+    }
+
+    bool HorisontalEdgeIsClear(int x, int y) const;
+    bool VerticalEdgeIsClear(int x, int y) const;
+    bool IsCornerPoint(int x, int y) const;
 private:
     uint Height, Width;
     std::vector<std::vector<bool>> MapGrid;
 
-    bool HorisontalEdgeIsClear(int x, int y) const;
-    bool VerticalEdgeIsClear(int x, int y) const;
 };
 
-TMap::TMap(std::string file_path) {
+inline TMap::TMap(std::string file_path) {
     std::ifstream in(file_path);
     std::string s;
     getline(in, s);
@@ -50,7 +59,7 @@ TMap::TMap(std::string file_path) {
     }
 }
 
-bool TMap::CellIsClear(int x, int y) const {
+inline bool TMap::CellIsClear(int x, int y) const {
     if (!(x >= 0 && x <= Height && y >= 0 && y <= Width))
         return false;
     if (x > 0 && y > 0 && !MapGrid[x - 1][y - 1])
@@ -64,19 +73,19 @@ bool TMap::CellIsClear(int x, int y) const {
     return false;
 }
 
-bool TMap::HorisontalEdgeIsClear(int x, int y) const {
+inline bool TMap::HorisontalEdgeIsClear(int x, int y) const {
     if (x > 0 && !MapGrid[x - 1][y])
         return true;
     return x < Height && !MapGrid[x][y];
 }
 
-bool TMap::VerticalEdgeIsClear(int x, int y) const {
+inline bool TMap::VerticalEdgeIsClear(int x, int y) const {
     if (y > 0 && !MapGrid[x][y - 1])
         return true;
     return y < Width && !MapGrid[x][y];
 }
 
-bool TMap::PathIsClear(int x1, int y1, int x2, int y2) const {
+inline bool TMap::PathIsClear(int x1, int y1, int x2, int y2) const {
     if (!CellIsClear(x1, y1) || !CellIsClear(x2, y2))
         return false;
     if (x1 > x2){
@@ -115,7 +124,7 @@ bool TMap::PathIsClear(int x1, int y1, int x2, int y2) const {
     } else {
         int y = y1 - 1;
         for (int x = x1; x < x2; x++){
-            while (vectProduct(x + 1 - x, y - y1, dx, dy) > 0){
+            while (vectProduct(x1 + 1 - x, y - y1, dx, dy) > 0){
                 if (MapGrid[x][y])
                     return false;
                 y--;
@@ -125,4 +134,17 @@ bool TMap::PathIsClear(int x1, int y1, int x2, int y2) const {
         }
     }
     return true;
+}
+
+inline bool TMap::IsCornerPoint(int x, int y) const{
+    int cnto = 2, cnte = 2;
+    if (x > 0 && y > 0 && !MapGrid[x - 1][y - 1])
+        cnte--;
+    if (x < Height && y < Width && !MapGrid[x][y])
+        cnte--;
+    if (x > 0 && y < Width && !MapGrid[x - 1][y])
+        cnto--;
+    if (x < Height && y > 0 && !MapGrid[x][y - 1])
+        cnto--;
+    return cnto + cnte > 0 && (cnto == 0 || cnte == 0);
 }

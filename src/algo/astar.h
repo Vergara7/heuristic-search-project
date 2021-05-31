@@ -13,7 +13,7 @@
 
 template<class SuccessorsFunc, class CostFunc, class HeuristicFunc>
 TRunResult AStar(uint xst, uint yst, uint xfin, uint yfin, const TMap& map,
-        SuccessorsFunc getNeighbors, CostFunc computeCost, HeuristicFunc heuristic)
+        SuccessorsFunc getNeighbors, CostFunc computeCost, HeuristicFunc heuristic, bool thetaAlgo)
 {
     TOpen open;
     TClosed closed;
@@ -30,10 +30,13 @@ TRunResult AStar(uint xst, uint yst, uint xfin, uint yfin, const TMap& map,
         auto neighbors = getNeighbors(*v, map);
         for (auto u : getNeighbors(*v, map)){
             if (!open.Contains(u) && !closed.Contains(u)) {
-                u->g = v->g + computeCost(*v, *u);
+                std::shared_ptr<TNode> prev = v;
+                if (thetaAlgo && v->Parent && map.PathIsClear(v->Parent->x, v->Parent->y, u->x, u->y))
+                    prev = v->Parent;
+                u->g = v->g + computeCost(*prev, *u);
                 u->h = heuristic(*u, *f);
                 u->F = u->g + u->h;
-                u->Parent = v;
+                u->Parent = std::move(prev);
                 open.Push(std::move(u));     
             }    
         }
