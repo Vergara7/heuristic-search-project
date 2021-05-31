@@ -1,3 +1,4 @@
+#include <chrono>
 #include <cassert>
 #include <fstream>
 #include <iostream>
@@ -20,6 +21,7 @@ int main(int argc, char* argv[]){
     fs::create_directory(artifactsPath);
     for (const auto& datasetsDir : fs::directory_iterator(datasetPath)){
         assert(datasetsDir.is_directory());
+        auto start = std::chrono::high_resolution_clock::now();
         std::string datasetName = datasetsDir.path().filename().filename();
         fs::create_directory(artifactsPath / datasetName);
         for (const auto& scensFile : fs::directory_iterator(datasetsDir.path() / "scens")){
@@ -52,6 +54,9 @@ int main(int argc, char* argv[]){
             if (cntFailed)
                 std::cout << "    Could not find path for " << cntFailed << " scens" << endl;
         }
+        std::ofstream time_out(artifactsPath / datasetName / "time");
+        auto finish = std::chrono::high_resolution_clock::now();
+        time_out << "time elapsed: " << (finish - start).count() << endl;
     }
     return 0;
 }
