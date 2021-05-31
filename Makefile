@@ -6,7 +6,8 @@ run_simple_anya:
 	./main_anya dataset artifacts
 
 run_simple:
-	./main theta trivial dataset artifacts
+	./main astar manhattan dataset artifacts
+	./main astar diagonal dataset artifacts
 
 run_astar:
 	./main astar trivial dataset artifacts && \

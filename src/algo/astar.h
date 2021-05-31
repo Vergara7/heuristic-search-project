@@ -25,11 +25,12 @@ TRunResult AStar(uint xst, uint yst, uint xfin, uint yfin, const TMap& map,
         if (closed.Contains(v))
             continue;
         closed.Push(v);
-        if (v->x == xfin && v->y == yfin)
+        if (v->x == xfin && v->y == yfin) {
             return TRunResult(v, open.Size(), closed.Size());
+        }
         auto neighbors = getNeighbors(*v, map);
         for (auto u : getNeighbors(*v, map)){
-            if (!open.Contains(u) && !closed.Contains(u)) {
+            if (!closed.Contains(u)) {
                 std::shared_ptr<TNode> prev = v;
                 if (thetaAlgo && v->Parent && map.PathIsClear(v->Parent->x, v->Parent->y, u->x, u->y))
                     prev = v->Parent;

@@ -29,5 +29,6 @@ std::vector<TNode> RestorePath(std::shared_ptr<TNode> fin) {
         fin = fin->Parent;
         path.push_back(*fin);
     }
+    reverse(path.begin(), path.end());
     return path;
 }
