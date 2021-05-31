@@ -1,4 +1,4 @@
-all: build_anya build run_all
+all: build_anya build run_anya run_2k_astar
 
 run_all: run_astar run_2k_astar run_theta run_anya
 
@@ -6,8 +6,8 @@ run_simple_anya:
 	./main_anya dataset artifacts
 
 run_simple:
-	./main astar manhattan dataset artifacts
-	./main astar diagonal dataset artifacts
+	./main_anya dataset artifacts
+	./main 2k_3 diagonal dataset artifacts
 
 run_astar:
 	./main astar trivial dataset artifacts && \
