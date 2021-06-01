@@ -38,7 +38,7 @@ int main(int argc, char* argv[]){
             NAnya::TAnya anyaAlgo(map);
             for (auto scen : scens){
                 cnt++;
-                if (scen.Level >= 3)
+                if (scen.Level >= 7)
                     continue;
                 std::vector<std::pair<int, int>> path;
                 dbl cost = anyaAlgo.Run(scen.yst, scen.xst, scen.yfin, scen.xfin, path);
