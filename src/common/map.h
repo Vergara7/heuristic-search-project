@@ -118,7 +118,7 @@ inline bool TMap::PathIsClear(int x1, int y1, int x2, int y2) const {
     if (y1 < y2){
         int y = y1;
         for (int x = x1; x < x2; x++){
-            while (vectProduct(dx, dy, x + 1 - x1, y + 1 - y1) < 0 && y + 1 < Width){
+            while (vectProduct(dy, -dx, y + 1 - y1, -(x + 1 - x1)) < 0 && y + 1 < Width){
                 if (MapGrid[x][y])
                     return false;
                 y++;
@@ -129,7 +129,7 @@ inline bool TMap::PathIsClear(int x1, int y1, int x2, int y2) const {
     } else {
         int y = y1 - 1;
         for (int x = x1; x < x2; x++){
-            while (vectProduct(x + 1 - x1, y - y1, dx, dy) < 0 && y > 0){
+            while (vectProduct(dy, -dx, y - y1, x1 - 1 - x) > 0 && y > 0){
                 if (MapGrid[x][y])
                     return false;
                 y--;
