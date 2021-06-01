@@ -8,9 +8,9 @@ A research of different modifications of regular A* algorithm for any-angle path
 
 Run `make` command in the root folder.
 
-## Analysis
+## Analysis and report
 
-The notebook that generates graphs for the report is in the `analysis` folder.
+The notebook that generates graphs for the report is in the `analysis` folder. The report is in the `report` folder.
 
 ## References
 
