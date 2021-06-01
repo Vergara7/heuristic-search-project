@@ -8,6 +8,14 @@ A research of different modifications of regular A* algorithm for any-angle path
 
 Run `make` command in the root folder.
 
+One can customize the Makefile to change the dataset.
+
+The result of the run is in the `artifacts` folder (path found, the number of nodes expanded and execution time).
+
+## Algo
+
+Regular A* with Euclidian distance and h2^k heuristics, ANYA and Theta* implementations are in `src` folder.
+
 ## Analysis and report
 
 The notebook that generates graphs for the report is in the `analysis` folder. The report is in the `report` folder.
