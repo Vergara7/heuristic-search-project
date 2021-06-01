@@ -28,10 +28,10 @@ nodes expanded: 19
 nodes expanded: 29
 135 301 137 296 
 nodes expanded: 25
-428 364 430 364 431 365 432 365 
-nodes expanded: 23
-300 421 296 421 295 420 294 420 
-nodes expanded: 30
+428 364 432 365 
+nodes expanded: 20
+300 421 294 420 
+nodes expanded: 26
 79 149 85 148 
 nodes expanded: 26
 279 258 286 258 
@@ -42,12 +42,12 @@ nodes expanded: 24
 nodes expanded: 34
 455 217 456 208 
 nodes expanded: 35
-445 341 449 345 450 345 451 346 452 346 453 347 454 347 
-nodes expanded: 64
+445 341 454 347 
+nodes expanded: 43
 237 291 232 285 
 nodes expanded: 32
-446 221 445 221 443 219 442 219 441 218 438 218 
-nodes expanded: 50
+446 221 438 218 
+nodes expanded: 37
 340 117 349 111 
 nodes expanded: 43
 329 76 339 73 
@@ -60,18 +60,18 @@ nodes expanded: 39
 nodes expanded: 33
 210 245 204 235 
 nodes expanded: 48
-394 477 396 477 400 477 402 479 403 479 405 481 
-nodes expanded: 77
-333 350 327 350 326 349 324 349 323 348 318 348 
-nodes expanded: 92
+394 477 405 481 
+nodes expanded: 48
+333 350 318 348 
+nodes expanded: 55
 61 313 72 305 
 nodes expanded: 53
 353 356 366 351 
 nodes expanded: 59
 442 418 452 410 
 nodes expanded: 50
-169 85 170 86 171 86 172 87 174 87 175 88 176 88 179 91 182 91 
-nodes expanded: 104
+169 85 182 91 
+nodes expanded: 61
 128 442 124 453 
 nodes expanded: 49
 287 259 287 273 
@@ -80,10 +80,10 @@ nodes expanded: 48
 nodes expanded: 51
 92 252 75 256 
 nodes expanded: 69
-127 448 129 450 132 450 134 452 136 452 140 456 141 456 
-nodes expanded: 106
+127 448 137 452 141 456 
+nodes expanded: 79
 247 398 250 382 
-nodes expanded: 61
+nodes expanded: 60
 353 336 337 341 
 nodes expanded: 67
 59 265 76 259 
@@ -96,8 +96,8 @@ nodes expanded: 67
 nodes expanded: 61
 214 261 219 276 
 nodes expanded: 63
-341 149 340 149 339 148 338 148 337 147 335 147 334 146 333 146 331 144 330 144 329 143 327 143 326 142 325 142 
-nodes expanded: 149
+341 149 325 142 
+nodes expanded: 79
 406 324 411 303 
 nodes expanded: 85
 190 182 186 204 
@@ -114,16 +114,16 @@ nodes expanded: 83
 nodes expanded: 105
 425 395 434 378 
 nodes expanded: 83
-270 363 276 360 280 356 278 350 
-nodes expanded: 170
+270 363 277 360 280 357 280 351 278 350 
+nodes expanded: 210
 293 365 311 354 
 nodes expanded: 87
 477 62 453 67 
 nodes expanded: 95
-137 392 130 392 129 391 126 391 125 390 124 390 123 389 122 389 121 388 119 388 118 387 117 387 116 386 115 386 114 385 113 385 
-nodes expanded: 203
-198 262 200 251 203 239 
-nodes expanded: 107
+137 392 132 392 113 385 
+nodes expanded: 96
+198 262 202 240 203 239 
+nodes expanded: 98
 275 338 257 358 
 nodes expanded: 100
 275 447 298 444 
@@ -136,5 +136,65 @@ nodes expanded: 95
 nodes expanded: 85
 254 125 259 102 
 nodes expanded: 91
-337 206 327 206 326 205 323 205 322 204 321 204 320 203 319 203 317 201 314 201 313 200 
-nodes expanded: 230
+337 206 313 200 
+nodes expanded: 100
+140 437 144 464 
+nodes expanded: 101
+348 339 359 315 
+nodes expanded: 121
+212 207 192 184 
+nodes expanded: 114
+144 197 164 192 168 192 168 188 
+nodes expanded: 288
+280 290 297 311 
+nodes expanded: 103
+63 268 88 257 
+nodes expanded: 127
+288 294 270 315 
+nodes expanded: 105
+317 350 286 348 
+nodes expanded: 103
+131 450 132 479 
+nodes expanded: 91
+75 169 61 143 
+nodes expanded: 132
+441 216 460 201 460 200 463 199 
+nodes expanded: 202
+316 121 324 105 324 104 333 93 
+nodes expanded: 170
+419 197 410 167 
+nodes expanded: 127
+272 473 272 456 277 441 
+nodes expanded: 128
+197 344 224 326 
+nodes expanded: 131
+383 115 412 131 
+nodes expanded: 151
+214 432 212 432 186 441 183 442 
+nodes expanded: 129
+344 115 331 86 
+nodes expanded: 151
+274 170 257 176 256 176 256 177 252 180 248 180 245 181 
+nodes expanded: 197
+391 402 375 431 
+nodes expanded: 151
+388 447 353 450 
+nodes expanded: 121
+393 34 357 35 
+nodes expanded: 116
+349 224 332 192 
+nodes expanded: 165
+283 195 271 162 
+nodes expanded: 157
+275 107 303 85 
+nodes expanded: 142
+217 224 216 207 209 191 
+nodes expanded: 165
+386 123 424 126 
+nodes expanded: 128
+404 414 443 415 
+nodes expanded: 125
+401 413 378 440 
+nodes expanded: 135
+189 284 178 316 
+nodes expanded: 147

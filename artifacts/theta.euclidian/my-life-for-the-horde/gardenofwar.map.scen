@@ -6,18 +6,18 @@ nodes expanded: 9
 nodes expanded: 12
 465 141 466 141 
 nodes expanded: 9
-420 165 421 166 422 166 
-nodes expanded: 12
+420 165 422 166 
+nodes expanded: 9
 136 455 139 455 
 nodes expanded: 15
 312 142 313 140 
 nodes expanded: 14
-159 89 158 89 157 88 
-nodes expanded: 15
+159 89 157 88 
+nodes expanded: 12
 176 233 175 234 
-nodes expanded: 9
-441 376 440 375 439 374 438 374 
-nodes expanded: 21
+nodes expanded: 8
+441 376 438 374 
+nodes expanded: 17
 155 93 155 98 
 nodes expanded: 21
 448 383 448 377 
@@ -46,8 +46,8 @@ nodes expanded: 45
 nodes expanded: 37
 263 431 261 421 
 nodes expanded: 40
-388 389 390 391 391 391 392 392 393 392 395 394 
-nodes expanded: 49
+388 389 395 394 
+nodes expanded: 35
 227 73 234 68 
 nodes expanded: 35
 250 313 242 320 
@@ -56,20 +56,20 @@ nodes expanded: 42
 nodes expanded: 39
 82 445 88 439 
 nodes expanded: 34
-360 407 357 415 
+360 407 360 408 357 415 
 nodes expanded: 34
 187 116 199 111 
 nodes expanded: 55
 143 398 148 387 
 nodes expanded: 53
-345 138 335 138 334 137 333 137 
-nodes expanded: 54
-137 435 139 435 140 436 142 436 143 436 145 438 146 438 147 439 148 439 149 440 150 440 
-nodes expanded: 102
+345 138 333 137 
+nodes expanded: 44
+137 435 150 440 
+nodes expanded: 59
 279 404 268 408 
 nodes expanded: 49
-157 243 157 247 151 253 
-nodes expanded: 41
+157 243 157 248 151 253 
+nodes expanded: 46
 316 376 301 376 
 nodes expanded: 51
 92 114 79 115 
@@ -80,42 +80,42 @@ nodes expanded: 49
 nodes expanded: 52
 370 353 362 366 
 nodes expanded: 61
-381 291 373 283 372 283 371 282 370 282 369 281 367 281 366 280 
-nodes expanded: 132
+381 291 366 280 
+nodes expanded: 74
 253 189 255 173 
-nodes expanded: 54
+nodes expanded: 53
 140 337 147 320 
 nodes expanded: 79
 210 359 191 359 
 nodes expanded: 63
-256 387 260 397 263 403 
-nodes expanded: 76
-426 253 416 253 414 253 412 251 411 251 410 250 
-nodes expanded: 100
+256 387 263 403 
+nodes expanded: 79
+426 253 410 250 
+nodes expanded: 61
 305 152 313 168 
 nodes expanded: 74
-354 290 361 290 363 290 364 291 365 291 367 291 369 293 
-nodes expanded: 98
-86 173 88 173 91 173 92 174 93 174 94 175 95 175 97 177 99 177 100 178 101 178 
-nodes expanded: 116
-97 195 99 195 102 195 104 195 106 197 107 197 108 198 109 198 110 199 111 199 112 200 114 200 115 201 
-nodes expanded: 162
+354 290 369 293 
+nodes expanded: 57
+86 173 101 178 
+nodes expanded: 63
+97 195 115 201 
+nodes expanded: 78
 174 134 174 112 
 nodes expanded: 72
-172 294 160 294 159 293 157 293 156 292 155 292 154 291 153 291 
-nodes expanded: 132
+172 294 153 291 
+nodes expanded: 71
 301 382 286 399 
 nodes expanded: 85
 397 436 376 442 
 nodes expanded: 85
 215 364 197 369 
 nodes expanded: 73
-250 445 253 442 256 439 267 431 
-nodes expanded: 83
+250 445 256 439 267 431 
+nodes expanded: 94
 101 416 100 410 100 394 
 nodes expanded: 65
-131 439 138 446 139 446 140 447 141 447 142 448 143 448 144 449 145 449 146 450 147 450 148 451 149 451 
-nodes expanded: 183
+131 439 149 451 
+nodes expanded: 84
 338 407 354 393 
 nodes expanded: 80
 402 89 412 66 
@@ -130,11 +130,71 @@ nodes expanded: 111
 nodes expanded: 103
 294 222 272 229 
 nodes expanded: 91
-219 336 222 336 223 337 225 337 226 338 227 338 228 339 230 339 232 341 233 341 234 342 236 342 238 344 239 344 240 345 241 345 
-nodes expanded: 200
-138 369 141 368 144 365 145 348 
-nodes expanded: 85
+219 336 241 345 
+nodes expanded: 98
+138 369 142 368 144 366 145 348 
+nodes expanded: 88
 150 318 135 337 
 nodes expanded: 93
-250 382 244 376 243 376 242 375 241 375 240 374 237 374 231 368 
+250 382 231 368 
+nodes expanded: 95
+183 309 193 283 
+nodes expanded: 122
+147 97 144 126 
+nodes expanded: 101
+142 430 163 451 
+nodes expanded: 109
+212 153 235 166 
+nodes expanded: 111
+159 339 147 312 
+nodes expanded: 139
+457 121 473 96 
+nodes expanded: 120
+240 170 260 151 260 150 
+nodes expanded: 146
+154 338 131 355 
+nodes expanded: 117
+129 147 148 123 
+nodes expanded: 121
+250 396 225 405 
+nodes expanded: 111
+425 97 416 112 413 116 410 126 
+nodes expanded: 158
+263 260 233 274 
+nodes expanded: 154
+139 231 170 243 
+nodes expanded: 146
+188 357 207 382 
+nodes expanded: 125
+315 212 332 184 
+nodes expanded: 141
+302 330 311 299 
+nodes expanded: 131
+276 238 257 264 
+nodes expanded: 131
+339 145 325 117 
+nodes expanded: 144
+338 244 340 244 363 225 
+nodes expanded: 117
+122 353 154 351 
+nodes expanded: 106
+374 418 379 420 381 422 388 450 
+nodes expanded: 184
+210 234 189 215 186 212 185 207 
+nodes expanded: 294
+94 416 90 430 84 437 73 439 
+nodes expanded: 301
+431 158 423 177 411 186 
+nodes expanded: 218
+220 294 224 304 228 308 231 311 246 316 
+nodes expanded: 252
+308 149 327 151 333 151 336 153 339 160 
+nodes expanded: 389
+249 406 282 417 
+nodes expanded: 149
+418 456 407 441 392 432 
 nodes expanded: 190
+371 173 362 170 359 167 357 146 
+nodes expanded: 206
+291 230 313 201 
+nodes expanded: 147
