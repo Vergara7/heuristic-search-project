@@ -1,5 +1,0 @@
-[0] Config.pm:304> INFO - This is Biber 2.12
-[0] Config.pm:307> INFO - Logfile is '/Users/ivanoleinik/sp_3/heu/project/report/.texpadtmp/report.blg'
-[43] biber-darwin:315> INFO - === Tue Jun  1, 2021, 15:51:35
-[85] Biber.pm:371> INFO - Reading '/Users/ivanoleinik/sp_3/heu/project/report/.texpadtmp/report.bcf'
-[183] Utils.pm:193> WARN - No data sources defined!
