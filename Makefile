@@ -1,4 +1,4 @@
-all: build_anya build run_all
+all: build_anya build run_for_report
 
 run_all: run_astar run_2k_astar run_theta run_anya
 
@@ -7,7 +7,17 @@ run_simple_anya:
 
 run_simple:
 	./main_anya dataset artifacts
+	./main theta diagonal dataset artifacts
+
+run_for_report:
+	./main_anya dataset artifacts
+	./main astar euclidian dataset artifacts
+	./main astar diagonal dataset artifacts
+	./main astar h2_4 dataset artifacts
+	./main 2k_3 euclidian dataset artifacts
 	./main 2k_3 diagonal dataset artifacts
+	./main 2k_3 h2_4 dataset artifacts
+	./main theta euclidian dataset artifacts
 
 run_astar:
 	./main astar trivial dataset artifacts && \

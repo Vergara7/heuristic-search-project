@@ -34,7 +34,7 @@ TRunResult AStar(uint xst, uint yst, uint xfin, uint yfin, const TMap& map,
                 std::shared_ptr<TNode> prev = v;
                 if (thetaAlgo && v->Parent && map.PathIsClear(v->Parent->x, v->Parent->y, u->x, u->y))
                     prev = v->Parent;
-                u->g = v->g + computeCost(*prev, *u);
+                u->g = prev->g + computeCost(*prev, *u);
                 u->h = heuristic(*u, *f);
                 u->F = u->g + u->h;
                 u->Parent = std::move(prev);

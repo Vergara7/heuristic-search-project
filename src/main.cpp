@@ -25,6 +25,8 @@ AlgoFunc CreateAlgo(const std::string& algo_name, const std::string heuristicNam
         heuristic = ChebyshevDistance;
     if (heuristicName == "diagonal")
         heuristic = DiagonalDistance;
+    if (heuristicName == "h2_4")
+        heuristic = H2_4;
     if (algo_name == "astar"){
         auto getNeighbors = [=](const TNode& node, const TMap& map){
             return GetKNeighbors(node, map, 2);
