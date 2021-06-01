@@ -11,12 +11,14 @@ run_simple:
 
 run_for_report:
 	./main_anya dataset artifacts
-	./main astar euclidian dataset artifacts
-	./main astar diagonal dataset artifacts
-	./main astar h2_4 dataset artifacts
+	./main 2k_2 euclidian dataset artifacts
+	./main 2k_2 h2_3 dataset artifacts
 	./main 2k_3 euclidian dataset artifacts
-	./main 2k_3 diagonal dataset artifacts
 	./main 2k_3 h2_4 dataset artifacts
+	./main 2k_4 euclidian dataset artifacts
+	./main 2k_4 h2_5 dataset artifacts
+	./main 2k_5 euclidian dataset artifacts
+	./main 2k_5 h2_6 dataset artifacts
 	./main theta euclidian dataset artifacts
 
 run_astar:
