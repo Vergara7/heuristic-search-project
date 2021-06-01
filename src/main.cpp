@@ -88,7 +88,7 @@ int main(int argc, char* argv[]){
             int cntFailed = 0, cnt = 0;
             for (auto scen : scens){
                 cnt++;
-                if (scen.Level >= 6)
+                if (scen.Level >= 7)
                     continue;
                 auto result = algo(scen.xst, scen.yst, scen.xfin, scen.yfin, map);
                 auto path = RestorePath(result.FinishNode);
