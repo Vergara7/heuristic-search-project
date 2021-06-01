@@ -23,10 +23,14 @@ AlgoFunc CreateAlgo(const std::string& algo_name, const std::string heuristicNam
         heuristic = ManhattanDistance;
     if (heuristicName == "chebyshev")
         heuristic = ChebyshevDistance;
-    if (heuristicName == "diagonal")
-        heuristic = DiagonalDistance;
+    if (heuristicName == "h2_3")
+        heuristic = H2_3;
     if (heuristicName == "h2_4")
         heuristic = H2_4;
+    if (heuristicName == "h2_5")
+        heuristic = H2_5;
+    if (heuristicName == "h2_6")
+        heuristic = H2_6;
     if (algo_name == "astar"){
         auto getNeighbors = [=](const TNode& node, const TMap& map){
             return GetKNeighbors(node, map, 2);
